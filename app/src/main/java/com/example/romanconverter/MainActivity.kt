@@ -8,4 +8,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
+    // set warning on TextInputEditText in the TextInputLayout
+    // handle errors
 }
