@@ -17,6 +17,7 @@
         android:textSize="20sp"/>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/romanLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,6 +25,7 @@
         app:layout_constraintTop_toBottomOf="@id/greeting"
         app:errorEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/roman"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,9 +33,16 @@
             app:layout_constraintTop_toBottomOf="@id/greeting"
             android:padding="10dp"
             android:inputType="text"
-            android:textAlignment="center"
-            android:hint="XXX"/>
+            android:textAlignment="center"/>
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/convert_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/romanLayout"
+        app:layout_constraintEnd_toEndOf="@id/romanLayout"
+        android:text="convert"/>
 
 
 
