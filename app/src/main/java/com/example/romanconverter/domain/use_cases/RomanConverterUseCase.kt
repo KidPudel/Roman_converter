@@ -1,14 +1,19 @@
 package com.example.romanconverter.domain.use_cases
 
 class RomanConverterUseCase {
-    private var previousDigit = 0
-    private var currentDigit = 0
-    private var convertedRoman = 0
 
-    fun convertToDecimal(roman: String): Int {
+    fun convertToDecimal(roman: String?): Int? {
+        if (roman == null) {
+            return null
+        }
+        var previousDigit = 0
+        var currentDigit = 0
+        var convertedRoman = 0
+
         val convenientRoman = roman.reversed()
         // IX
         // XI -> if next is lesser then subtract
+
 
         convenientRoman.forEach {
             when (it) {
@@ -20,7 +25,9 @@ class RomanConverterUseCase {
                 'D' -> currentDigit = 500
                 'M' -> currentDigit = 1000
             }
-            convertedRoman += if(currentDigit < previousDigit) -currentDigit else +currentDigit
+            convertedRoman += if (currentDigit < previousDigit) -currentDigit else +currentDigit
+
+            previousDigit = currentDigit
         }
 
         return convertedRoman
