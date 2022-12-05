@@ -5,9 +5,15 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.romanconverter.databinding.ActivityMainBinding
 import com.example.romanconverter.presentation.view_models.RomanConverterViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // lazy initialization of viewmodel
+        val romanConverterViewModel: RomanConverterViewModel by viewModels()
 
         val resultDialog = AlertDialog.Builder(this)
             .setTitle("Result")
@@ -22,8 +30,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Thanks :3", Toast.LENGTH_SHORT).show()
             }.create()
 
-        // lazy initialize viewmodel
-        val romanConverterViewModel: RomanConverterViewModel by viewModels()
         var convertedRoman: Int?
 
         binding.convertButton.setOnClickListener {

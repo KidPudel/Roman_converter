@@ -3,9 +3,13 @@ package com.example.romanconverter.presentation.view_models
 
 import androidx.lifecycle.ViewModel
 import com.example.romanconverter.domain.use_cases.RomanConverterUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class RomanConverterViewModel : ViewModel() {
-    private val romanConverterUseCase = RomanConverterUseCase()
+@HiltViewModel
+class RomanConverterViewModel @Inject constructor(
+    val romanConverterUseCase: RomanConverterUseCase
+    ) : ViewModel() {
 
     fun convertRoman(roman: String): Int? {
         return romanConverterUseCase.convertToDecimal(roman.toRomanOrNull())
